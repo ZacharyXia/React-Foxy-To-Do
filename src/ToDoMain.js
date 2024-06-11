@@ -24,8 +24,10 @@ import { v4 as uuidv4 } from 'uuid';
 export default function ToDo() {
     const [tasks, setTasks] = useState([]);
     const [opened, setOpened] = useState(false);
-    const [currentContent, setCurrentContent] = useState("I am a content");
+    const [currentContent, setCurrentContent] = useState("");
     const [currentId, setCurrentId] = useState("");
+
+    let editorContent = "";
 
     // const preferredColorScheme = useColorScheme();
     const [colorScheme, setColorScheme] = useLocalStorage({
@@ -47,7 +49,6 @@ export default function ToDo() {
                 ...task,
                 isSelected: task.id === id
             }));
-            console.log(tasks)
             setCurrentId(id);
             saveTasks(updatedTasks);
             return updatedTasks;
@@ -62,7 +63,7 @@ export default function ToDo() {
                 title: taskTitle.current.value,
                 summary: taskSummary.current.value,
                 isSelected: false,
-                content: "I am new content",
+                content: "",
                 id: uuidv4()
             };
         setTasks([
@@ -86,16 +87,51 @@ export default function ToDo() {
         saveTasks([...clonedTasks]);
     }
 
-    function handleSave(newContent) {
+    function getCurrentContent(content) {
+        editorContent = content;
+    }
+
+    function saveCurrentTask() {
         setTasks((prev) => {
             const updatedTasks = prev.map((card) =>
-                card.id === currentId ? { ...card, content: newContent } : card
+                card.id === currentId ? { ...card, content: editorContent } : card
             );
             saveTasks(updatedTasks);
-            setCurrentContent(newContent);
             return updatedTasks;
         });
-        // console.log(newContent + currentIndex)
+    }
+
+    function ActionIcons(props) {
+        return (
+            <Grid gutter= {{ base: 5, xs: 'md', md: 'xl', xl: 50 }}>
+                <Grid.Col span={7}>
+                    <ActionIcon
+                        onClick={() => {
+                            toggleCurrentCard(props.task.id);
+                        }}
+                        color={'red'}
+                        variant={'transparent'}>
+                        <Ballpen />
+                    </ActionIcon>
+                </Grid.Col>
+
+                <Grid.Col span = {2}>
+                    <ActionIcon
+                        onClick={() => {
+                            deleteTask(props.index);
+                        }}
+                        color={'red'}
+                        variant={'transparent'}>
+                        <Trash />
+                    </ActionIcon>
+                </Grid.Col>
+            </Grid>
+        )
+    }
+
+    function handleSave() {
+        saveCurrentTask();
+        setCurrentContent(editorContent);
     }
 
     function loadTasks() {
@@ -173,7 +209,7 @@ export default function ToDo() {
                                         fontFamily: `Greycliff CF, ${theme.fontFamily}`,
                                         fontWeight: 900,
                                     })}>
-                                    Uni To-Do
+                                    Foxy To-Do
                                 </Title>
                                 <ActionIcon
                                     color={'blue'}
@@ -193,22 +229,7 @@ export default function ToDo() {
                                             <Card key={index} mt={'sm'} shadow={task.isSelected ? "sm": "none"} withBorder={task.isSelected}>
                                                 <Group position={'apart'}>
                                                     <Text weight={'bold'}>{task.title}</Text>
-                                                    <ActionIcon
-                                                        onClick={() => {
-                                                            deleteTask(index);
-                                                        }}
-                                                        color={'red'}
-                                                        variant={'transparent'}>
-                                                        <Trash />
-                                                    </ActionIcon>
-                                                    <ActionIcon
-                                                        onClick={() => {
-                                                            toggleCurrentCard(task.id);
-                                                        }}
-                                                        color={'red'}
-                                                        variant={'transparent'}>
-                                                        <Ballpen />
-                                                    </ActionIcon>
+                                                    <ActionIcons index={index} task={task}/>
                                                 </Group>
                                                 <Text color={'dimmed'} size={'md'} mt={'sm'}>
                                                     {task.summary
@@ -248,7 +269,7 @@ export default function ToDo() {
                     theme={{ colorScheme, defaultRadius: 'md' }}
                     withGlobalStyles
                     withNormalizeCSS>
-                    <TextEditor content={currentContent} saveContent={handleSave}  debug2={currentContent}/>
+                    <TextEditor content={currentContent} getContent={getCurrentContent}  handleSave = {handleSave}/>
                 </MantineProvider>
             </ColorSchemeProvider>
         )

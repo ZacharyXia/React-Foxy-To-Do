@@ -1,25 +1,34 @@
-<h1 align="center">Todo React App  📝</h1>  
-<p align="center">
-  🖊️ A simple Todo App built using <a href="https://reactjs.org/">React</a> and <a href="https://mantine.dev/">Mantine UI</a>
-</p>
+# Foxy To-Do
 
-## This is a super simple Todo App built using React.js and styled using Mantine UI.
+Foxy To-Do is a simple React-based To-do manager with rich text support.
+This project is based on the [todo_react_app](https://github.com/javascriptbear/todo_react_app/) repository.
 
-You can view a live demo of the project here: https://javascriptbear.github.io/todo_react_app/
-Or, you can watch this video demo
+## Features
 
-### **(Most likely outdated, its reccomeneded you check out the live demo!)**
+- **Create Tasks**: Users can easily create new tasks by providing a title and summary.
+- **Edit Tasks**: Each task can be edited by clicking on the edit icon, which opens a text editor with rich text support.
+- **Delete Tasks**: Unwanted tasks can be removed from the list with a single click on the delete icon.
+- **Dark Mode**: The application supports a dark mode, which can be toggled with a convenient button for improved visibility in low-light conditions.
+- **Persistent Data**: Task data is stored in the browser's local storage, ensuring that your tasks are not lost even if the application is refreshed or closed.
 
-https://user-images.githubusercontent.com/109053279/178185429-8de77574-cc2f-429f-8c4e-b1ed9f290894.mp4
+## Getting Started
 
-## 😃 Features:
+To run the Foxy To-Do application locally, follow these steps:
 
-- ➕ Add todos
-- 🗑️ Delete todos
-- ⏸ Save todos to Local Storage when the state changes
-- ▶️ Load the todos from Local Storage when the site is loaded again
-- 🌙 Light \ dark mode toggle
+1. Clone the repository:
+   git clone https://github.com/ZacharyXia/Foxy-To-Do.git
+2. Navigate to the project directory:
+   cd foxy-to-do
+3. Install the dependencies:
+   npm install
+4. Start the development server:
+   npm start
+5. Open your web browser and visit `http://localhost:3000` to access the Foxy To-Do application.
 
-<p align="center">
-  ❤️ Feel free to create issues and contributions for features or bugs to this project.
-</p>
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
