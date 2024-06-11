@@ -3,6 +3,9 @@
 Foxy To-Do is a simple React-based To-do manager with rich text support.
 This project is based on the [todo_react_app](https://github.com/javascriptbear/todo_react_app/) repository.
 
+![image](https://github.com/ZacharyXia/React-Foxy-To-Do/assets/70338974/5c20bff3-07f3-4504-a9f9-a387fa24746d)
+
+
 ## Demo
 [Live demo](https://react-foxy-to-do.vercel.app/)
 
