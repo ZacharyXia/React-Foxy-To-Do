@@ -2,7 +2,7 @@
 	"name": "todo_react_app",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://javascriptbear.github.io/todo_react_app",
+	"homepage": ".",
 	"dependencies": {
 		"@mantine/core": "^5.10.4",
 		"@mantine/hooks": "^5.10.4",
