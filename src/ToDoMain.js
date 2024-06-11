@@ -8,43 +8,43 @@ import {
   Group,
   Card,
   ActionIcon,
-  Grid,
-} from "@mantine/core";
+  Grid
+} from '@mantine/core';
 
-import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 
-import React, { useState, useRef, useEffect } from "react";
-import { MoonStars, Sun, Trash, Ballpen } from "tabler-icons-react";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
-import TextEditor from "./TextEditor";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState, useRef, useEffect } from 'react';
+import { MoonStars, Sun, Trash, Ballpen } from 'tabler-icons-react';
+import { useHotkeys, useLocalStorage } from '@mantine/hooks';
+import TextEditor from './TextEditor';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ToDo() {
   const [tasks, setTasks] = useState([]);
   const [opened, setOpened] = useState(false);
-  const [currentContent, setCurrentContent] = useState("");
-  const [currentId, setCurrentId] = useState("");
+  const [currentContent, setCurrentContent] = useState('');
+  const [currentId, setCurrentId] = useState('');
 
-  let editorContent = "";
+  let editorContent = '';
 
   const [colorScheme, setColorScheme] = useLocalStorage({
-    key: "mantine-color-scheme",
-    defaultValue: "light",
-    getInitialValueInEffect: true,
+    key: 'mantine-color-scheme',
+    defaultValue: 'light',
+    getInitialValueInEffect: true
   });
   const toggleColorScheme = (value) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
-  const taskTitle = useRef("");
-  const taskSummary = useRef("");
+  const taskTitle = useRef('');
+  const taskSummary = useRef('');
 
   function toggleCurrentCard(id) {
     setTasks((prevTasks) => {
       const updatedTasks = prevTasks.map((task) => ({
         ...task,
-        isSelected: task.id === id,
+        isSelected: task.id === id
       }));
       setCurrentId(id);
       saveTasks(updatedTasks);
@@ -60,8 +60,8 @@ export default function ToDo() {
       title: taskTitle.current.value,
       summary: taskSummary.current.value,
       isSelected: false,
-      content: "",
-      id: uuidv4(),
+      content: '',
+      id: uuidv4()
     };
     setTasks([...tasks, newTask]);
 
@@ -85,7 +85,7 @@ export default function ToDo() {
   function saveCurrentTask() {
     setTasks((prev) => {
       const updatedTasks = prev.map((card) =>
-        card.id === currentId ? { ...card, content: editorContent } : card,
+        card.id === currentId ? { ...card, content: editorContent } : card
       );
       saveTasks(updatedTasks);
       return updatedTasks;
@@ -94,14 +94,14 @@ export default function ToDo() {
 
   function ActionIcons(props) {
     return (
-      <Grid gutter={{ base: 5, xs: "md", md: "xl", xl: 50 }}>
+      <Grid gutter={{ base: 5, xs: 'md', md: 'xl', xl: 50 }}>
         <Grid.Col span={7}>
           <ActionIcon
             onClick={() => {
               toggleCurrentCard(props.task.id);
             }}
-            color={"red"}
-            variant={"transparent"}
+            color={'red'}
+            variant={'transparent'}
           >
             <Ballpen />
           </ActionIcon>
@@ -112,8 +112,8 @@ export default function ToDo() {
             onClick={() => {
               deleteTask(props.index);
             }}
-            color={"red"}
-            variant={"transparent"}
+            color={'red'}
+            variant={'transparent'}
           >
             <Trash />
           </ActionIcon>
@@ -128,7 +128,7 @@ export default function ToDo() {
   }
 
   function loadTasks() {
-    let loadedTasks = localStorage.getItem("tasks");
+    let loadedTasks = localStorage.getItem('tasks');
 
     let tasks = JSON.parse(loadedTasks);
 
@@ -138,7 +138,7 @@ export default function ToDo() {
   }
 
   function saveTasks(tasks) {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
   useEffect(() => {
@@ -147,20 +147,17 @@ export default function ToDo() {
 
   function ToDoBar() {
     return (
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
-          theme={{ colorScheme, defaultRadius: "md" }}
+          theme={{ colorScheme, defaultRadius: 'md' }}
           withGlobalStyles
           withNormalizeCSS
         >
           <div className="App">
             <Modal
               opened={opened}
-              size={"md"}
-              title={"New Task"}
+              size={'md'}
+              title={'New Task'}
               withCloseButton={false}
               onClose={() => {
                 setOpened(false);
@@ -168,24 +165,24 @@ export default function ToDo() {
               centered
             >
               <TextInput
-                mt={"md"}
+                mt={'md'}
                 ref={taskTitle}
-                placeholder={"Task Title"}
+                placeholder={'Task Title'}
                 required
-                label={"Title"}
+                label={'Title'}
               />
               <TextInput
                 ref={taskSummary}
-                mt={"md"}
-                placeholder={"Task Summary"}
-                label={"Summary"}
+                mt={'md'}
+                placeholder={'Task Summary'}
+                label={'Summary'}
               />
-              <Group mt={"md"} position={"apart"}>
+              <Group mt={'md'} position={'apart'}>
                 <Button
                   onClick={() => {
                     setOpened(false);
                   }}
-                  variant={"subtle"}
+                  variant={'subtle'}
                 >
                   Cancel
                 </Button>
@@ -200,25 +197,18 @@ export default function ToDo() {
               </Group>
             </Modal>
             <Container size={550} my={40}>
-              <Group position={"apart"}>
+              <Group position={'apart'}>
                 <Title
                   sx={(theme) => ({
                     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
                     fontWeight: 900,
+                    marginBottom: '10px'
                   })}
                 >
                   Foxy To-Do
                 </Title>
-                <ActionIcon
-                  color={"blue"}
-                  onClick={() => toggleColorScheme()}
-                  size="lg"
-                >
-                  {colorScheme === "dark" ? (
-                    <Sun size={16} />
-                  ) : (
-                    <MoonStars size={16} />
-                  )}
+                <ActionIcon color={'blue'} onClick={() => toggleColorScheme()} size="lg">
+                  {colorScheme === 'dark' ? <Sun size={16} /> : <MoonStars size={16} />}
                 </ActionIcon>
               </Group>
               {tasks.length > 0 ? (
@@ -227,25 +217,23 @@ export default function ToDo() {
                     return (
                       <Card
                         key={index}
-                        mt={"sm"}
-                        shadow={task.isSelected ? "sm" : "none"}
+                        mt={'sm'}
+                        shadow={task.isSelected ? 'sm' : 'none'}
                         withBorder={task.isSelected}
                       >
-                        <Group position={"apart"}>
-                          <Text weight={"bold"}>{task.title}</Text>
+                        <Group position={'apart'}>
+                          <Text weight={'bold'}>{task.title}</Text>
                           <ActionIcons index={index} task={task} />
                         </Group>
-                        <Text color={"dimmed"} size={"md"} mt={"sm"}>
-                          {task.summary
-                            ? task.summary
-                            : "No summary was provided for this task"}
+                        <Text color={'dimmed'} size={'md'} mt={'sm'}>
+                          {task.summary ? task.summary : 'No summary was provided for this task'}
                         </Text>
                       </Card>
                     );
                   }
                 })
               ) : (
-                <Text size={"lg"} mt={"md"} color={"dimmed"}>
+                <Text size={'lg'} mt={'md'} color={'dimmed'}>
                   You have no tasks
                 </Text>
               )}
@@ -254,7 +242,7 @@ export default function ToDo() {
                   setOpened(true);
                 }}
                 fullWidth
-                mt={"md"}
+                mt={'md'}
               >
                 New Task
               </Button>
@@ -267,12 +255,9 @@ export default function ToDo() {
 
   function Editor(props) {
     return (
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
-          theme={{ colorScheme, defaultRadius: "md" }}
+          theme={{ colorScheme, defaultRadius: 'md' }}
           withGlobalStyles
           withNormalizeCSS
         >
@@ -296,7 +281,16 @@ export default function ToDo() {
     );
   } else {
     return (
-      <Grid>
+      <Grid
+        sx={{
+          maxWidth: '100vw',
+          '@media (max-width: 768px)': {
+            maxWidth: '100vw'
+          },
+          paddingLeft: '10px',
+          paddingRight: '10px'
+        }}
+      >
         <Grid.Col span={4}>
           <ToDoBar />
         </Grid.Col>

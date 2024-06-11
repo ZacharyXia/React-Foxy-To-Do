@@ -1,7 +1,5 @@
-import React from "react";
-import ToDo from "./ToDoMain";
-// import Editor from "./TextEditor";
-import { Grid } from "@mantine/core";
+import React from 'react';
+import ToDo from './ToDoMain';
 
 export default function App() {
   return (

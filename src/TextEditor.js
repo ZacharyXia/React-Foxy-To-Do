@@ -1,13 +1,13 @@
-import { RichTextEditor, Link } from "@mantine/tiptap";
-import { useEditor } from "@tiptap/react";
-import Highlight from "@tiptap/extension-highlight";
-import StarterKit from "@tiptap/starter-kit";
-import Underline from "@tiptap/extension-underline";
-import TextAlign from "@tiptap/extension-text-align";
-import Superscript from "@tiptap/extension-superscript";
-import SubScript from "@tiptap/extension-subscript";
-import { Button, Grid } from "@mantine/core";
-import Placeholder from "@tiptap/extension-placeholder";
+import { RichTextEditor, Link } from '@mantine/tiptap';
+import { useEditor } from '@tiptap/react';
+import Highlight from '@tiptap/extension-highlight';
+import StarterKit from '@tiptap/starter-kit';
+import Underline from '@tiptap/extension-underline';
+import TextAlign from '@tiptap/extension-text-align';
+import Superscript from '@tiptap/extension-superscript';
+import SubScript from '@tiptap/extension-subscript';
+import { Button } from '@mantine/core';
+import Placeholder from '@tiptap/extension-placeholder';
 
 export default function TextEditor(props) {
   const editor = useEditor({
@@ -18,19 +18,22 @@ export default function TextEditor(props) {
       Superscript,
       SubScript,
       Highlight,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Placeholder.configure({
-        placeholder: "Pro tip: Press save button to avoid losing data.",
-      }),
+        placeholder: 'Pro tip: Press save button to avoid losing data.'
+      })
     ],
     content: props.content,
     onUpdate: ({ editor }) => {
       props.getContent(editor.getHTML());
-    },
+    }
   });
 
   return (
-    <RichTextEditor editor={editor}>
+    <RichTextEditor
+      editor={editor}
+      sx={{ marginTop: '20px', paddingTop: '5px', paddingBottom: '5px' }}
+    >
       <RichTextEditor.Toolbar sticky stickyOffset={0}>
         <RichTextEditor.ControlsGroup>
           <RichTextEditor.Bold />
@@ -74,14 +77,14 @@ export default function TextEditor(props) {
           onClick={() => {
             props.handleSave();
           }}
-          variant={"outline"}
-          size={"xs"}
+          variant={'outline'}
+          size={'xs'}
         >
           Save
         </Button>
       </RichTextEditor.Toolbar>
 
-      <RichTextEditor.Content />
+      <RichTextEditor.Content sx={{ minHeight: '55vh' }} />
     </RichTextEditor>
   );
 }

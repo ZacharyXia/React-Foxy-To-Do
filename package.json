@@ -33,7 +33,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +57,14 @@
     ]
   },
   "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.2",
     "gh-pages": "^4.0.0",
-    "prettier": "3.3.2"
+    "globals": "^15.4.0",
+    "prettier": "^3.3.2"
   }
 }
