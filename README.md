@@ -5,25 +5,33 @@ This project is based on the [todo_react_app](https://github.com/javascriptbear/
 
 ## Features
 
-- **Create Tasks**: Users can easily create new tasks by providing a title and summary.
-- **Edit Tasks**: Each task can be edited by clicking on the edit icon, which opens a text editor with rich text support.
-- **Delete Tasks**: Unwanted tasks can be removed from the list with a single click on the delete icon.
-- **Dark Mode**: The application supports a dark mode, which can be toggled with a convenient button for improved visibility in low-light conditions.
-- **Persistent Data**: Task data is stored in the browser's local storage, ensuring that your tasks are not lost even if the application is refreshed or closed.
+- **Create Tasks**: Easily create new tasks by providing a title and summary.
+- **Edit Tasks**: Edit the text with rich text support.
+- **Delete Tasks**: Remove tasks with a single click on the delete icon.
+- **Dark Mode**: Toggled the moon button to open the dark mode.
+- **Persistent Data**: Store data in the browser's local storage for persistence.
 
 ## Getting Started
 
 To run the Foxy To-Do application locally, follow these steps:
 
 1. Clone the repository:
-   git clone https://github.com/ZacharyXia/Foxy-To-Do.git
-2. Navigate to the project directory:
+```
+   git clone git@github.com:ZacharyXia/React-Foxy-To-Do.git](https://github.com/ZacharyXia/React-Foxy-To-Do.git
+```
+3. Navigate to the project directory:
+```
    cd foxy-to-do
-3. Install the dependencies:
+```
+5. Install the dependencies:
+```
    npm install
-4. Start the development server:
+```
+7. Start the development server:
+```
    npm start
-5. Open your web browser and visit `http://localhost:3000` to access the Foxy To-Do application.
+```
+9. Open your web browser to access the application.
 
 ## Contributing
 
