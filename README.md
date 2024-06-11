@@ -23,7 +23,7 @@ To run the Foxy To-Do application locally, follow these steps:
 
 1. Clone the repository:
 ```
-   git clone git@github.com:ZacharyXia/React-Foxy-To-Do.git](https://github.com/ZacharyXia/React-Foxy-To-Do.git
+   git clone https://github.com/ZacharyXia/React-Foxy-To-Do.git
 ```
 3. Navigate to the project directory:
 ```
