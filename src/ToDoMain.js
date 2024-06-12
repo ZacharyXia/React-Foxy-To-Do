@@ -265,6 +265,7 @@ export default function ToDo() {
             content={currentContent}
             getContent={getCurrentContent}
             handleSave={handleSave}
+            isMobile={props.isMobile}
           />
         </MantineProvider>
       </ColorSchemeProvider>
@@ -276,7 +277,7 @@ export default function ToDo() {
     return (
       <div>
         <ToDoBar />
-        <Editor />
+        <Editor isMobile={isMobile} />
       </div>
     );
   } else {
@@ -295,7 +296,7 @@ export default function ToDo() {
           <ToDoBar />
         </Grid.Col>
         <Grid.Col span={8}>
-          <Editor />
+          <Editor isMobile={isMobile} />
         </Grid.Col>
       </Grid>
     );
