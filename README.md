@@ -7,6 +7,7 @@ This project is based on the [todo_react_app](https://github.com/javascriptbear/
 ![image](https://github.com/ZacharyXia/React-Foxy-To-Do/assets/70338974/8ae1a6be-6a19-4d74-8553-c6d1939abd62)
 
 ## Demo
+
 [Live demo](https://react-foxy-to-do.vercel.app/)
 
 ## Features
@@ -22,21 +23,29 @@ This project is based on the [todo_react_app](https://github.com/javascriptbear/
 To run the Foxy To-Do application locally, follow these steps:
 
 1. Clone the repository:
+
 ```
    git clone https://github.com/ZacharyXia/React-Foxy-To-Do.git
 ```
+
 3. Navigate to the project directory:
+
 ```
    cd foxy-to-do
 ```
+
 5. Install the dependencies:
+
 ```
    npm install
 ```
+
 7. Start the development server:
+
 ```
    npm start
 ```
+
 9. Open your web browser to access the application.
 
 ## Contributing

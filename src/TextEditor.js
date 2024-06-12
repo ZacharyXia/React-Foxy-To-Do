@@ -32,7 +32,11 @@ export default function TextEditor(props) {
   return (
     <RichTextEditor
       editor={editor}
-      sx={{ marginTop: '20px', paddingTop: '5px', paddingBottom: '5px' }}
+      sx={
+        props.isMobile
+          ? { margin: '20px 20px 20px 20px', paddingTop: '5px', paddingBottom: '5px' }
+          : { marginTop: '20px', paddingTop: '5px', paddingBottom: '5px' }
+      }
     >
       <RichTextEditor.Toolbar sticky stickyOffset={0}>
         <RichTextEditor.ControlsGroup>
